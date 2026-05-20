@@ -16,18 +16,13 @@ room_8 = rooms["room_8"]["center"]
 
 
 # Call Lainey's function that returns the schedule in the below format
-# schedule = get_schedule()
 
-# schedule_robot = schedule[0]
-# schedule_human = schedule[1]
+schedule = [initial_position, room_1, room_2, room_3, room_4, room_5, room_6, room_7, room_8, final_position]
 
 
-schedule_robot = [initial_position, room_1, room_2, room_3, room_4, room_5, room_6, room_7, room_8, final_position]
-schedule_human = [initial_position, room_8, room_7, room_6, room_5, room_4, room_3, room_2, room_1, final_position]
-
-for i in range(len(schedule_robot) - 1):
-    start_position = schedule_robot[i]
-    end_position = schedule_robot[i + 1]
+for i in range(len(schedule) - 1):
+    start_position = schedule[i]
+    end_position = schedule[i + 1]
     trajectory = get_trajectory(
         start_position=start_position,
         end_position=end_position,
