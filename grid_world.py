@@ -24,6 +24,8 @@ from typing import Dict, List, Tuple, Optional
 import numpy as np
 
 try:
+    import matplotlib
+    matplotlib.use("TkAgg")
     import matplotlib.pyplot as plt
 except ImportError:  # plotting is optional
     plt = None
