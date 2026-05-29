@@ -24,6 +24,8 @@ from typing import Dict, List, Tuple, Optional
 import numpy as np
 
 try:
+    import matplotlib
+    matplotlib.use("TkAgg")
     import matplotlib.pyplot as plt
 except ImportError:  # plotting is optional
     plt = None
@@ -208,29 +210,29 @@ def plot_grid_world(
     for name, info in rooms.items():
         cx, cy = info["center"]
         dx, dy = info["doorway"]
-        ax.scatter(cx, cy, marker="o", s=35)
-        ax.scatter(dx, dy, marker="s", s=20)
-        ax.text(cx + 2, cy - 2, name, fontsize=8)
+        ax.scatter(cx, cy, marker="o", s=100)
+        ax.scatter(dx, dy, marker="s", s=100)
+        ax.text(cx + 2, cy - 2, name, fontsize=15)
 
     if path:
         xs = [p[0] for p in path]
         ys = [p[1] for p in path]
-        ax.plot(xs, ys, linewidth=2)
+        ax.plot(xs, ys, linewidth=4)
 
     if start is not None:
-        ax.scatter(start[0], start[1], marker="x", s=80, label="start")
+        ax.scatter(start[0], start[1], marker="x", s=100, label="start")
     if goal is not None:
         ax.scatter(goal[0], goal[1], marker="*", s=100, label="goal")
 
-    ax.set_title("200 x 200 Grid World")
-    ax.set_xlabel("x cell")
-    ax.set_ylabel("y cell")
+    ax.set_title("200 x 200 Grid World", fontsize=15)
+    ax.set_xlabel("x cell", fontsize=15)
+    ax.set_ylabel("y cell", fontsize=15)
     ax.set_xlim(-1, grid.shape[1])
     ax.set_ylim(grid.shape[0], -1)
     ax.set_aspect("equal")
     ax.grid(True, linewidth=0.2, alpha=0.3)
     if start is not None or goal is not None:
-        ax.legend(loc="upper right")
+        ax.legend(loc="upper right", fontsize=15)
     fig.tight_layout()
 
     if save_path:
